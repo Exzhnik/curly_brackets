@@ -1,7 +1,6 @@
 import 'package:curly_brackets/curly.dart';
 import 'package:curly_brackets/res/url.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
 import 'dart:convert';
 
 import '../curly.dart';
