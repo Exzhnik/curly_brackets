@@ -1,8 +1,25 @@
-import 'dart:convert';
+class Result{
+  List<Curly> curly = List<Curly>();
 
-List<Curly> curlyFromJson(String str) => List<Curly>.from(json.decode(str).map((x) => Curly.fromJson(x)));
+  Result({this.curly});
 
-String curlyToJson(List<Curly> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+  Result.fromJson(Map<String, dynamic> json) {
+    if (json['curly'] != null) {
+      curly = new List<Curly>();
+      json['curly'].forEach((v) {
+        curly.add(new Curly.fromJson(v));
+      });
+    }
+  }
+
+   Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.curly != null) {
+      data['curly'] = this.curly.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
 
 class Curly {
     int id;
